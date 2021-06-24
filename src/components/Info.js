@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { GoRepo, GoGist } from 'react-icons/go';
@@ -57,7 +57,10 @@ const Wrapper = styled.section`
 `;
 
 function Info() {
-  return <div>info</div>;
+  const data = useContext(GithubContext);
+
+  console.log(data);
+  return <Wrapper></Wrapper>;
 }
 
 export default Info;
