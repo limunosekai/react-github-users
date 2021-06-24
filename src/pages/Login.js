@@ -21,7 +21,15 @@ const Wrapper = styled.section`
 `;
 
 function Login() {
-  return <div>Login</div>;
+  return (
+    <Wrapper>
+      <div className='container'>
+        <img src={loginImg} alt='github user' />
+        <h1>Github User</h1>
+        <button className='btn'>Login</button>
+      </div>
+    </Wrapper>
+  );
 }
 
 export default Login;
