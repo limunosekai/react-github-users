@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
-import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
+import { Pie2D, Column2D, Bar2D, Doughnut2D } from './Charts';
 
 const Wrapper = styled.div`
   display: grid;
@@ -26,7 +26,33 @@ const Wrapper = styled.div`
 `;
 
 function Repos() {
-  return <div>repo</div>;
+  const { repos } = useContext(GithubContext);
+  let languages = repos.reduce((total, item) => {
+    const { language } = item;
+    if (!language) return total;
+    if (!total[language]) {
+      total[language] = { label: language, value: 1 };
+    } else {
+      total[language] = {
+        ...total[language],
+        value: total[language].value + 1,
+      };
+    }
+    return total;
+  }, {});
+
+  // 오브젝트 => 배열
+  languages = Object.values(languages).sort((a, b) => {
+    return b.value - a.value;
+  });
+
+  return (
+    <section className='section'>
+      <Wrapper className='section-center'>
+        <Pie2D data={languages} />
+      </Wrapper>
+    </section>
+  );
 }
 
 export default Repos;
