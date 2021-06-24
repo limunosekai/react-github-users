@@ -14,7 +14,14 @@ const Wrapper = styled.div`
 `;
 
 function User() {
-  return <div>search</div>;
+  return (
+    <section className='section'>
+      <Wrapper className='section-center'>
+        <Card />
+        <Followers />
+      </Wrapper>
+    </section>
+  );
 }
 
 export default User;

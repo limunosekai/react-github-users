@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
@@ -11,7 +11,7 @@ const Wrapper = styled.article`
   border-bottom-right-radius: var(--radius);
   position: relative;
   &::before {
-    content: 'user';
+    content: 'User';
     position: absolute;
     top: 0;
     left: 0;
@@ -85,7 +85,36 @@ const Wrapper = styled.article`
 `;
 
 function Card() {
-  return <div>Card</div>;
+  const { githubUser } = useContext(GithubContext);
+  const { avatar_url, html_url, name, company, blog, bio, location, email } =
+    githubUser;
+  return (
+    <Wrapper>
+      <header>
+        <img src={avatar_url} alt={name} />
+        <div>
+          <h4>{name}</h4>
+          <p>✉ {email || 'Nothing'}</p>
+        </div>
+        <a href={html_url}>Follow</a>
+      </header>
+      <p className='bio'>{bio}</p>
+      <div className='links'>
+        <p>
+          <MdBusiness />
+          {company || 'Nothing'}
+        </p>
+        <p>
+          <MdLocationOn />
+          {location || 'Nothing'}
+        </p>
+        <a href={`https://${blog}`}>
+          <MdLink />
+          {blog}
+        </a>
+      </div>
+    </Wrapper>
+  );
 }
 
 export default Card;
