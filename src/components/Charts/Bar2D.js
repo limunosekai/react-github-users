@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Bar3D() {
+function Bar2D() {
   return <div>chart</div>;
 }
 
-export default Bar3D;
+export default Bar2D;

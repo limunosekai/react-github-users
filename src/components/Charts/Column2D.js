@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Pie3D() {
+function Column2D() {
   return <div></div>;
 }
 
-export default Pie3D;
+export default Column2D;
