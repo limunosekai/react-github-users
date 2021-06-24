@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Colum3D() {
+function Column3D() {
   return <div></div>;
 }
 
-export default Colum3D;
+export default Column3D;
