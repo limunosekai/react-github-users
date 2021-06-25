@@ -86,13 +86,14 @@ const ErrorWrapper = styled.article`
 `;
 
 function Search() {
-  const { requests, error } = useContext(GithubContext);
+  const { requests, error, searchGithubUser } = useContext(GithubContext);
   const [user, setUser] = useState('');
 
   // get things from global context
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user) {
+      searchGithubUser(user);
       setUser('');
     }
   };
