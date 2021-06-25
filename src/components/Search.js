@@ -86,8 +86,9 @@ const ErrorWrapper = styled.article`
 `;
 
 function Search() {
-  const { requests } = useContext(GithubContext);
+  const { requests, error } = useContext(GithubContext);
   const [user, setUser] = useState('');
+
   // get things from global context
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -99,6 +100,11 @@ function Search() {
   return (
     <section className='section'>
       <Wrapper className='section-center'>
+        {error.show && (
+          <ErrorWrapper>
+            <p>{error.msg}</p>
+          </ErrorWrapper>
+        )}
         <form onSubmit={handleSubmit}>
           <div className='form-control'>
             <MdSearch />

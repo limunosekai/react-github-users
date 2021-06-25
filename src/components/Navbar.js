@@ -34,7 +34,7 @@ const Wrapper = styled.nav`
 `;
 
 function Navbar() {
-  return <div>Navbar</div>;
+  return <Wrapper>Navbar</Wrapper>;
 }
 
 export default Navbar;
