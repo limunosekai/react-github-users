@@ -17,7 +17,7 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.candy';
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
-const Pie2D = ({ data }) => {
+const Doughnut2D = ({ data }) => {
   const chartConfigs = {
     type: 'doughnut2d', // The chart type
     width: '100%', // Width of the chart
@@ -39,4 +39,4 @@ const Pie2D = ({ data }) => {
   return <ReactFC {...chartConfigs} />;
 };
 
-export default Pie2D;
+export default Doughnut2D;

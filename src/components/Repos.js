@@ -44,25 +44,44 @@ function Repos() {
   }, {});
 
   // 오브젝트 => 배열
-  const mostUsed = Object.values(languages).sort((a, b) => {
-    return b.value - a.value;
-  });
+  // Pie Chart Data
+  const mostUsed = Object.values(languages)
+    .sort((a, b) => {
+      return b.value - a.value;
+    })
+    .slice(0, 5);
 
+  // Doughnut Chart Data
   const mostPopular = Object.values(languages)
     .sort((a, b) => {
       return b.stars - a.stars;
     })
     .map((item) => {
       return { ...item, value: item.stars };
-    });
+    })
+    .slice(0, 5);
+
+  // Column & Bar Chart Data
+  let { stars, forks } = repos.reduce(
+    (total, item) => {
+      const { stargazers_count, name, forks } = item;
+      total.stars[stargazers_count] = { label: name, value: stargazers_count };
+      total.forks[forks] = { label: name, value: forks };
+      return total;
+    },
+    { stars: {}, forks: {} }
+  );
+
+  stars = Object.values(stars).slice(-5).reverse();
+  forks = Object.values(forks).slice(-5).reverse();
 
   return (
     <section className='section'>
       <Wrapper className='section-center'>
         <Pie2D data={mostUsed} />
-        <div></div>
+        <Column2D data={stars} />
         <Doughnut2D data={mostPopular} />
-        <div></div>
+        <Bar2D data={forks} />
       </Wrapper>
     </section>
   );
