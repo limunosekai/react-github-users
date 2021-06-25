@@ -86,7 +86,8 @@ const ErrorWrapper = styled.article`
 `;
 
 function Search() {
-  const { requests, error, searchGithubUser } = useContext(GithubContext);
+  const { requests, error, searchGithubUser, isLoading } =
+    useContext(GithubContext);
   const [user, setUser] = useState('');
 
   // get things from global context
@@ -115,7 +116,9 @@ function Search() {
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
-            {requests > 0 && <button type='submit'>Search</button>}
+            {requests > 0 && !isLoading && (
+              <button type='submit'>Search</button>
+            )}
           </div>
         </form>
         <h3>Requests : {requests} / 60</h3>
