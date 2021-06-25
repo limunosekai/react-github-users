@@ -11,6 +11,7 @@ const GithubContext = React.createContext();
 // Provider, Consumer - GithubContext.Provider
 
 const GithubProvider = ({ children }) => {
+  // user data
   const [githubUser, setGithubUser] = useState(mockUser);
   const [repos, setRepos] = useState(mockRepos);
   const [followers, setFollowers] = useState(mockFollowers);
@@ -18,6 +19,9 @@ const GithubProvider = ({ children }) => {
   // request loading
   const [requests, setRequests] = useState(0);
   const [loading, setLoading] = useState(false);
+
+  // error
+  const [error, setError] = useState({ show: false, msg: '' });
 
   // check rate
   const checkRequests = () => {
@@ -27,17 +31,27 @@ const GithubProvider = ({ children }) => {
           rate: { remaining },
         } = data;
         setRequests(remaining);
+
+        // 요청 한도 초과시
         if (remaining === 0) {
-          // throw an error
+          toggleError(true, 'Sorry, you have exceeded your hourly rate limit.');
         }
       })
       .catch((err) => console.log(err));
   };
 
+  const toggleError = (show = false, msg = '') => {
+    setError({ show, msg });
+  };
+
+  // error
+
   useEffect(checkRequests, []);
 
   return (
-    <GithubContext.Provider value={{ githubUser, repos, followers, requests }}>
+    <GithubContext.Provider
+      value={{ githubUser, repos, followers, requests, error }}
+    >
       {children}
     </GithubContext.Provider>
   );
