@@ -15,15 +15,17 @@
 - github API
 - context API
 
-✨ Main Logic
-1. PrivateRoute
+### ✨ Main Logic
+1. **PrivateRoute**
+
 ![image](https://user-images.githubusercontent.com/69956570/123538038-aaafff00-d76d-11eb-8b81-e337aaed5e06.png)
 
-2. Github User Search
+2. **Github User Search**
+
 ![image](https://user-images.githubusercontent.com/69956570/123538100-fc588980-d76d-11eb-9a40-e0de333d4679.png)
 
 
-✨ Screen Shot
+### ✨ Screen Shot
 ![image](https://user-images.githubusercontent.com/69956570/123538143-4a6d8d00-d76e-11eb-99de-44132f517fc8.png)
 ![image](https://user-images.githubusercontent.com/69956570/123538149-50fc0480-d76e-11eb-9d71-772a5b720013.png)
 ![image](https://user-images.githubusercontent.com/69956570/123538154-59ecd600-d76e-11eb-8569-29ad396a7349.png)
