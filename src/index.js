@@ -6,11 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { GithubProvider } from './context/context';
 import { Auth0Provider } from '@auth0/auth0-react';
 
+let domain = process.env.REACT_APP_DOMAIN;
+let clientID = process.env.REACT_APP_CLIENT_ID;
+
 ReactDOM.render(
   <React.StrictMode>
-    <GithubProvider>
-      <App />
-    </GithubProvider>
+    <Auth0Provider
+      domain={domain}
+      clientId={clientID}
+      redirectUri={window.location.origin}
+    >
+      <GithubProvider>
+        <App />
+      </GithubProvider>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
