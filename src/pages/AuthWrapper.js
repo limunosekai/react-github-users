@@ -12,8 +12,23 @@ const Wrapper = styled.section`
   }
 `;
 
-function AuthWrapper() {
-  return <div></div>;
+function AuthWrapper({ children }) {
+  const { isLoading, error } = useAuth0();
+  if (isLoading) {
+    return (
+      <Wrapper>
+        <img src={loadingGif} alt='spinner' />
+      </Wrapper>
+    );
+  }
+  if (error) {
+    return (
+      <Wrapper>
+        <h1>{error.message}</h1>
+      </Wrapper>
+    );
+  }
+  return <>{children}</>;
 }
 
 export default AuthWrapper;
